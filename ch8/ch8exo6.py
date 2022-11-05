@@ -10,4 +10,5 @@ while True:
         print('Invalid input')
         exit()
     myList.append(number)
-print(max(myList))
+print('Maximum: ',max(myList))
+print('Minimum: ',min(myList))
