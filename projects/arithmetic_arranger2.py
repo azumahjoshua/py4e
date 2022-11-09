@@ -27,27 +27,27 @@ def arithmetic_arranger(problems, answer=False):
         if len(first_operand[i]) > 4 or len(second_operand[i]) > 4:
             return "Error: Numbers cannot be more than four digits."
 
-    first_line = []
-    second_line = []
-    third_line = []
-    fourth_line = []
+    firstrow = []
+    secondrow = []
+    thirdrow = []
+    fourthrow = []
 
     for i in range(len(first_operand)):
         if len(first_operand[i]) > len(second_operand[i]):
-            first_line.append(" "*2 + first_operand[i])
+            firstrow.append(" "*2 + first_operand[i])
         else:
-            first_line.append(
+            firstrow.append(
                 " "*(len(second_operand[i]) - len(first_operand[i]) + 2) + first_operand[i])
 
     for i in range(len(second_operand)):
         if len(second_operand[i]) > len(first_operand[i]):
-            second_line.append(operator[i] + " " + second_operand[i])
+            secondrow.append(operator[i] + " " + second_operand[i])
         else:
-            second_line.append(
+            secondrow.append(
                 operator[i] + " "*(len(first_operand[i]) - len(second_operand[i]) + 1) + second_operand[i])
 
     for i in range(len(first_operand)):
-        third_line.append(
+        thirdrow.append(
             "-"*(max(len(first_operand[i]), len(second_operand[i])) + 2))
 
     if answer:
@@ -58,16 +58,16 @@ def arithmetic_arranger(problems, answer=False):
                 ans = str(int(first_operand[i]) - int(second_operand[i]))
 
             if len(ans) > max(len(first_operand[i]), len(second_operand[i])):
-                fourth_line.append(" " + ans)
+                fourthrow.append(" " + ans)
             else:
-                fourth_line.append(
+                fourthrow.append(
                     " "*(max(len(first_operand[i]), len(second_operand[i])) - len(ans) + 2) + ans)
-        arranged_problems = "    ".join(first_line) + "\n" + "    ".join(
-            second_line) + "\n" + "    ".join(third_line) + "\n" + "    ".join(fourth_line)
+        arranged_problems = "    ".join(firstrow) + "\n" + "    ".join(
+            secondrow) + "\n" + "    ".join(thirdrow) + "\n" + "    ".join(fourthrow)
     else:
         arranged_problems = "    ".join(
-            first_line) + "\n" + "    ".join(second_line) + "\n" + "    ".join(third_line)
+            firstrow) + "\n" + "    ".join(secondrow) + "\n" + "    ".join(thirdrow)
     return arranged_problems
 
 
-print(arithmetic_arranger(['3801 - 2', '123 + 49'], True))
+# print(arithmetic_arranger(['3801 - 2', '123 + 49']))
